@@ -254,6 +254,41 @@
   .move-mnemonic .move-label { color: var(--teal); }
   .move-activity .move-label { color: var(--purple); }
 
+  /* ── DONE FOR YOU CTA ── */
+  .dfy-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    background: var(--navy);
+    border-radius: 0 0 14px 14px;
+    padding: 12px 20px;
+    margin-top: -1px;
+  }
+  .dfy-cta p {
+    font-size: 12px;
+    color: rgba(255,255,255,.7);
+    line-height: 1.5;
+    margin: 0 !important;
+  }
+  .dfy-cta p strong { color: white; }
+  .dfy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 11.5px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 20px;
+    text-decoration: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: background .15s;
+  }
+  .dfy-btn:hover { background: var(--gold2); }
+
   .mnemonic-word {
     font-family: 'DM Serif Display', serif;
     font-size: 18px; color: var(--navy);
@@ -341,9 +376,9 @@
   <div class="cover-band">
     <div class="cover-eyebrow">The CCMA Retention Toolkit · Section 3 of 5</div>
     <div class="cover-title">Module-by-Module <em>Retention Moves</em></div>
-    <div class="cover-sub">One mnemonic and one activity for every phase of the NHA CCMA curriculum — organized the way you actually teach it. The hardest modules get extra attention.</div>
+    <div class="cover-sub">One mnemonic and one activity for every phase of the medical assisting curriculum — organized the way you actually teach it. The hardest modules get extra attention.</div>
     <div class="cover-chips">
-      <span class="cover-chip">📋 NHA CCMA Aligned</span>
+      <span class="cover-chip">📋 Medical Assisting Aligned</span>
       <span class="cover-chip">🏫 High School Seniors</span>
       <span class="cover-chip">✅ Any Classroom Structure</span>
       <span class="cover-chip">⭐ Hard Module Callouts</span>
@@ -352,14 +387,14 @@
 
   <!-- INTRO -->
   <div class="intro-box">
-    This section gives you a <strong>mnemonic and a classroom activity</strong> for every phase of the NHA CCMA curriculum. Use the mnemonic as a quick recall anchor — something students can reach for the moment they go blank on an exam question. Use the activity to build the retrieval muscle before test day arrives. Modules marked <strong style="color: var(--gold);">★ THIS ONE'S HARD</strong> include an extra note on why students typically struggle and what to watch for.
+    This section gives you a <strong>mnemonic and a classroom activity</strong> for every phase of the medical assisting curriculum. Use the mnemonic as a quick recall anchor — something students can reach for the moment they go blank on an exam question. Use the activity to build the retrieval muscle before test day arrives. Modules marked <strong style="color: var(--gold);">★ THIS ONE'S HARD</strong> include an extra note on why students typically struggle and what to watch for.
   </div>
 
   <!-- ═══════════════════════════════ -->
   <!-- PHASE 1: FOUNDATION -->
   <!-- ═══════════════════════════════ -->
   <div class="phase-header-band ph-foundation">
-    <div class="ph-eyebrow">Phase 1 · Weeks 1–5</div>
+    <div class="ph-eyebrow">Phase 1 · Foundation</div>
     <div class="ph-title">Foundation</div>
     <div class="ph-sub">The retention challenge in Phase 1 is abstract content. Roles, ethics, law, and terminology don't feel clinical yet — students aren't sure why it matters. Anchor everything to a "what happens if you get this wrong on the job" moment and the engagement flips immediately.</div>
     <div class="ph-chips">
@@ -376,7 +411,7 @@
     <div class="module-top">
       <div class="module-icon">🏥</div>
       <div class="module-title-wrap">
-        <div class="module-nha">NHA Module 1 + 12</div>
+        <div class="module-nha">Module · Roles &amp; Communication</div>
         <div class="module-title">Roles & Responsibilities</div>
       </div>
     </div>
@@ -407,7 +442,7 @@
     <div class="module-top">
       <div class="module-icon">🗣️</div>
       <div class="module-title-wrap">
-        <div class="module-nha">NHA Module 12</div>
+        <div class="module-nha">Module · Communication</div>
         <div class="module-title">Communication & Customer Service</div>
       </div>
     </div>
@@ -439,7 +474,7 @@
     <div class="module-top">
       <div class="module-icon">⚖️</div>
       <div class="module-title-wrap">
-        <div class="module-nha">NHA Module 13</div>
+        <div class="module-nha">Module · Ethics &amp; Law</div>
         <div class="module-title">Medical Ethics, Law & HIPAA</div>
       </div>
     </div>
@@ -471,7 +506,7 @@
     <div class="module-top">
       <div class="module-icon">🧬</div>
       <div class="module-title-wrap">
-        <div class="module-nha">NHA Module 2</div>
+        <div class="module-nha">Module · A&amp;P &amp; Terminology</div>
         <div class="module-title">A&P Overview + Medical Terminology</div>
       </div>
     </div>
@@ -492,7 +527,7 @@
         <div class="move-box move-activity">
           <div class="move-label">🎯 Activity</div>
           <div class="activity-name">Term Deconstruction Race</div>
-          <div class="activity-desc">Write 5 medical terms on the board. Teams race to break each one into prefix, root, and suffix and write a plain-English definition. First team with all 5 correct wins. The key rule: no dictionaries, no phones — only word part logic. Builds the skill the NHA actually tests.</div>
+          <div class="activity-desc">Write 5 medical terms on the board. Teams race to break each one into prefix, root, and suffix and write a plain-English definition. First team with all 5 correct wins. The key rule: no dictionaries, no phones — only word part logic. Builds the skill the certification exam actually tests.</div>
           <span class="activity-time">⏱ 10–12 min</span>
         </div>
       </div>
@@ -504,7 +539,7 @@
     <div class="module-top">
       <div class="module-icon">🧤</div>
       <div class="module-title-wrap">
-        <div class="module-nha">NHA Module 6</div>
+        <div class="module-nha">Module · Infection Control</div>
         <div class="module-title">Infection Control & Safety</div>
       </div>
     </div>
@@ -538,8 +573,15 @@
   <!-- ═══════════════════════════════ -->
   <!-- PHASE 2: CLINICAL SKILLS -->
   <!-- ═══════════════════════════════ -->
+
+  <!-- DONE FOR YOU CTA — Phase 1 complete -->
+  <div class="dfy-cta" style="border-radius:14px;margin-bottom:16px">
+    <p><strong>Five modules down.</strong> If building print-and-go activities for every one of these sounds like a lot — I've already created them. Ready to use this week.</p>
+    <a class="dfy-btn" href="https://www.teacherspayteachers.com/store/healthsim-hub" target="_blank">Get it at HealthSim Hub →</a>
+  </div>
+
   <div class="phase-header-band ph-clinical">
-    <div class="ph-eyebrow">Phase 2 · Weeks 6–13</div>
+    <div class="ph-eyebrow">Phase 2 · Clinical Skills</div>
     <div class="ph-title">Clinical Skills</div>
     <div class="ph-sub">The retention challenge in Phase 2 is volume and overlap. Students are learning hands-on procedures while simultaneously memorizing normal values, protocols, and sequences. The mnemonics here are designed to lock in the procedural order — because sequence errors are the #1 reason students lose points on clinical check-offs and exam questions.</div>
     <div class="ph-chips">
@@ -558,7 +600,7 @@
     <div class="module-top">
       <div class="module-icon">💓</div>
       <div class="module-title-wrap">
-        <div class="module-nha">NHA Module 3</div>
+        <div class="module-nha">Module · Patient Care &amp; Vitals</div>
         <div class="module-title">Vital Signs & Patient Assessment</div>
       </div>
     </div>
@@ -591,7 +633,7 @@
     <div class="module-top">
       <div class="module-icon">🩺</div>
       <div class="module-title-wrap">
-        <div class="module-nha">NHA Modules 4 + 5</div>
+        <div class="module-nha">Module · General Patient Care</div>
         <div class="module-title">General Patient Care & Sterile Technique</div>
       </div>
     </div>
@@ -620,7 +662,7 @@
     <div class="module-top">
       <div class="module-icon">🩸</div>
       <div class="module-title-wrap">
-        <div class="module-nha">NHA Module 8</div>
+        <div class="module-nha">Module · Phlebotomy</div>
         <div class="module-title">Phlebotomy & Specimen Collection</div>
       </div>
       <div class="hard-badge">★ This One's Hard</div>
@@ -628,32 +670,39 @@
     <div class="module-body">
       <div class="hard-callout">
         <div class="hard-callout-label">⚠️ Why Students Struggle Here</div>
-        Phlebotomy trips students up because it has two separate memorization challenges happening at once: the <strong>order of draw</strong> (which tube color comes first) and <strong>venipuncture sequence</strong> (the procedural steps). Students often mix up which list is which, or they memorize the order of draw and blank on the rationale behind it. The mnemonic below separates these two problems.
+        Phlebotomy trips students up because it has two separate memorization challenges happening at once: the <strong>order of draw</strong> (the sequence) and <strong>the tube colors</strong> (which color goes with which tube). Here's the honest truth — the mnemonic below locks in the sequence beautifully. The colors themselves? Those take repetition and hands-on practice more than any acronym. Use the mnemonic for order, use the activity for colors, and expect to revisit both more than once.
       </div>
       <div class="move-grid">
         <div class="move-box move-mnemonic">
-          <div class="move-label">🧠 Mnemonic</div>
-          <div class="mnemonic-word">STOP LIGHT GRAY</div>
+          <div class="move-label">🧠 Mnemonic — For Sequence</div>
+          <div class="mnemonic-word">STOP LIGHT RED<br>STAY PUT GREEN<br>LIGHT GO</div>
           <div class="mnemonic-breakdown">
-            Order of Draw by tube color:<br><br>
-            <span>S</span>terile (Yellow — Blood cultures)<br>
-            <span>T</span>op is Light Blue (coag)<br>
-            <span>O</span>range/Gold (SST — serum)<br>
-            <span>P</span>urple/Lavender (EDTA — CBC)<br>
-            <span>L</span>ight Green (lithium heparin)<br>
-            <span>I</span>s for Green (sodium heparin)<br>
-            <span>G</span>ray (glucose/fluoride — last)<br>
-            <span>H</span>T = Remember: <span>H</span>emolysis ruins the <span>T</span>ube if order is wrong
+            Order of Draw — all 8 tubes:<br><br>
+            <span>Stop</span> = Yellow/SPS (blood cultures)<br>
+            <span>Light</span> = Light Blue (coagulation — PT, PTT, INR)<br>
+            <span>Red</span> = Red (serum chemistry)<br>
+            <span>Stay</span> = SST — Gold/Tiger Top (serum separator)<br>
+            <span>Put</span> = PST — Light Green (plasma separator)<br>
+            <span>Green</span> = Green (heparin — electrolytes, ammonia)<br>
+            <span>Light</span> = Lavender/Purple (EDTA — CBC, A1C)<br>
+            <span>Go</span> = Gray (glucose, GTT, blood alcohol)<br><br>
+            <em style="font-size:11px;color:#64748b">For the colors: repetition beats mnemonics. Use the activity below consistently until the colors are automatic — that's what actually works.</em>
           </div>
         </div>
         <div class="move-box move-activity">
-          <div class="move-label">🎯 Activity</div>
+          <div class="move-label">🎯 Activity — For Color Recognition</div>
           <div class="activity-name">Tube Color Lineup</div>
-          <div class="activity-desc">Print or gather colored cards representing each tube type. Shuffle them. Students race to physically arrange the cards in correct order of draw on their desk — fastest correct lineup wins. Round 2: remove one card and students identify the missing tube and explain why its position matters. Hands-on, visual, and competitive.</div>
-          <span class="activity-time">⏱ 10–12 min</span>
+          <div class="activity-desc">Print or gather colored cards representing all 8 tube types. Shuffle them. Students race to physically arrange the cards in correct order of draw — fastest correct lineup wins. Round 2: remove one card and students identify the missing tube, name its additive, and explain why its position matters. Run this activity multiple times across multiple days — color recognition builds through repetition, not one exposure.</div>
+          <span class="activity-time">⏱ 10–12 min · Repeat across multiple class days</span>
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- DONE FOR YOU CTA — Phlebotomy -->
+  <div class="dfy-cta" style="border-radius:14px;margin-bottom:16px">
+    <p><strong>Phlebotomy colors take repetition — not one activity.</strong> The done-for-you vault includes tube color lineup cards AND a Canva game that makes the repetition feel like playing instead of drilling.</p>
+    <a class="dfy-btn" href="https://www.teacherspayteachers.com/store/healthsim-hub" target="_blank">Get it at HealthSim Hub →</a>
   </div>
 
   <!-- Lab / POC Testing -->
@@ -661,7 +710,7 @@
     <div class="module-top">
       <div class="module-icon">🔬</div>
       <div class="module-title-wrap">
-        <div class="module-nha">NHA Module 7</div>
+        <div class="module-nha">Module · Lab &amp; POC Testing</div>
         <div class="module-title">Lab / Point of Care Testing</div>
       </div>
     </div>
@@ -698,7 +747,7 @@
     <div class="module-top">
       <div class="module-icon">💗</div>
       <div class="module-title-wrap">
-        <div class="module-nha">NHA Module 9</div>
+        <div class="module-nha">Module · EKG &amp; Cardiovascular</div>
         <div class="module-title">EKG & Cardiovascular Testing</div>
       </div>
       <div class="hard-badge">★ This One's Hard</div>
@@ -706,7 +755,7 @@
     <div class="module-body">
       <div class="hard-callout">
         <div class="hard-callout-label">⚠️ Why Students Struggle Here</div>
-        EKG is hard for two distinct reasons. First, lead placement requires spatial memory — students can recite the lead names but blank on where they actually go on the body. Second, artifact identification looks similar to abnormal rhythms to an untrained eye, and the NHA exam tests both. Students who only memorize lead names without practicing placement almost always miss artifact questions.
+        EKG is hard for two distinct reasons. First, lead placement requires spatial memory — students can recite the lead names but blank on where they actually go on the body. Second, artifact identification looks similar to abnormal rhythms to an untrained eye, and the certification exam tests both. Students who only memorize lead names without practicing placement almost always miss artifact questions.
       </div>
       <div class="move-grid">
         <div class="move-box move-mnemonic">
@@ -731,12 +780,18 @@
     </div>
   </div>
 
+  <!-- DONE FOR YOU CTA — EKG -->
+  <div class="dfy-cta" style="border-radius:14px;margin-bottom:16px">
+    <p><strong>EKG lead placement takes repetition to stick.</strong> The torso labeling maps and lead placement practice cards are already made — ready to print for tomorrow.</p>
+    <a class="dfy-btn" href="https://www.teacherspayteachers.com/store/healthsim-hub" target="_blank">Get it at HealthSim Hub →</a>
+  </div>
+
   <!-- Pharmacology -->
   <div class="module-card">
     <div class="module-top">
       <div class="module-icon">💊</div>
       <div class="module-title-wrap">
-        <div class="module-nha">NHA Module 1 (Pharm)</div>
+        <div class="module-nha">Module · Pharmacology</div>
         <div class="module-title">Pharmacology & Medication Administration</div>
       </div>
     </div>
@@ -770,7 +825,7 @@
   <!-- PHASE 3: ADMIN -->
   <!-- ═══════════════════════════════ -->
   <div class="phase-header-band ph-admin">
-    <div class="ph-eyebrow">Phase 3 · Weeks 14–18</div>
+    <div class="ph-eyebrow">Phase 3 · Admin &amp; Simulation</div>
     <div class="ph-title">Administrative & Clinic Simulation</div>
     <div class="ph-sub">The retention challenge in Phase 3 is that admin content feels disconnected from the clinical work students find exciting. Frame every administrative concept as patient protection or clinic survival — if this step goes wrong, the patient doesn't get care and the clinic doesn't get paid. That reframe changes everything.</div>
     <div class="ph-chips">
@@ -785,7 +840,7 @@
     <div class="module-top">
       <div class="module-icon">🖥️</div>
       <div class="module-title-wrap">
-        <div class="module-nha">NHA Module 11</div>
+        <div class="module-nha">Module · Administrative Assisting</div>
         <div class="module-title">Administrative Assisting & Front Desk</div>
       </div>
     </div>
@@ -816,7 +871,7 @@
     <div class="module-top">
       <div class="module-icon">💰</div>
       <div class="module-title-wrap">
-        <div class="module-nha">NHA Module 11</div>
+        <div class="module-nha">Module · Administrative Assisting</div>
         <div class="module-title">Billing, Coding & Insurance</div>
       </div>
       <div class="hard-badge">★ This One's Hard</div>
@@ -835,17 +890,23 @@
             <span>ICD-10-CM</span> = WHY (diagnosis — why the patient came in)<br>
             <span>CPT</span> = WHAT (procedure — what was done to them)<br>
             <span>HCPCS</span> = STUFF (equipment, supplies, meds not in CPT)<br><br>
-            Every billing question on the NHA exam fits into WHY · WHAT · STUFF.
+            Every billing question on the certification exam fits into WHY · WHAT · STUFF.
           </div>
         </div>
         <div class="move-box move-activity">
           <div class="move-label">🎯 Activity</div>
           <div class="activity-name">Code Type Scenario Sort</div>
-          <div class="activity-desc">Write 9 patient visit items on index cards — 3 diagnoses, 3 procedures, 3 supplies/equipment. Shuffle and distribute. Students sort into three piles: ICD-10, CPT, or HCPCS. Round 2: add 3 insurance term cards (ABN, superbill, prior auth) and students must explain in one sentence when each form is used. Cheap, fast, and directly mirrors how the NHA frames these questions.</div>
+          <div class="activity-desc">Write 9 patient visit items on index cards — 3 diagnoses, 3 procedures, 3 supplies/equipment. Shuffle and distribute. Students sort into three piles: ICD-10, CPT, or HCPCS. Round 2: add 3 insurance term cards (ABN, superbill, prior auth) and students must explain in one sentence when each form is used. Cheap, fast, and directly mirrors how certification exams frame these questions.</div>
           <span class="activity-time">⏱ 12–15 min</span>
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- DONE FOR YOU CTA — Billing -->
+  <div class="dfy-cta" style="border-radius:14px;margin-bottom:16px">
+    <p><strong>Billing and coding is the module most teachers dread building for.</strong> The WHY · WHAT · STUFF card sort and scenario sets are already made and ready to go.</p>
+    <a class="dfy-btn" href="https://www.teacherspayteachers.com/store/healthsim-hub" target="_blank">Get it at HealthSim Hub →</a>
   </div>
 
   <!-- Care Coordination -->
@@ -853,7 +914,7 @@
     <div class="module-top">
       <div class="module-icon">🤝</div>
       <div class="module-title-wrap">
-        <div class="module-nha">NHA Module 10</div>
+        <div class="module-nha">Module · Care Coordination</div>
         <div class="module-title">Patient Care Coordination & Education</div>
       </div>
     </div>
@@ -879,7 +940,7 @@
         <div class="move-box move-activity">
           <div class="move-label">🎯 Activity</div>
           <div class="activity-name">Referral Relay</div>
-          <div class="activity-desc">Give teams a patient scenario requiring a specialist referral. Each team member owns one step of the coordination process — eligibility check, prior auth, patient education, record transfer. Teams race to complete the full referral workflow in the correct order and present it to the class in under 2 minutes. Tests sequence knowledge, teamwork, and communication — all tested on the NHA exam.</div>
+          <div class="activity-desc">Give teams a patient scenario requiring a specialist referral. Each team member owns one step of the coordination process — eligibility check, prior auth, patient education, record transfer. Teams race to complete the full referral workflow in the correct order and present it to the class in under 2 minutes. Tests sequence knowledge, teamwork, and communication — all tested on the certification exam.</div>
           <span class="activity-time">⏱ 15 min</span>
         </div>
       </div>
@@ -890,8 +951,12 @@
   <div class="closing-band">
     <h3>One module at a time. One mnemonic at a time.</h3>
     <p>You don't have to use all of these at once. Pick the module your students are in right now and start there. Add the activity to this week's plan and teach the mnemonic before you teach the concept. Small shifts, consistent repetition, compounding results.</p>
+    <div style="margin:18px auto 20px;max-width:500px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;">
+      <p style="font-size:13px;color:rgba(255,255,255,.75);line-height:1.6;margin:0"><strong style="color:white">Want all of this done for you?</strong> Print-and-go activity cards, mnemonic posters, and more — already built for every module.</p>
+      <a class="dfy-btn" href="https://www.teacherspayteachers.com/store/healthsim-hub" target="_blank" style="background:var(--gold)">Visit HealthSim Hub →</a>
+    </div>
     <div class="section-nav">
-      <a href="retention-toolkit-cover.html" class="nav-chip" style="text-decoration:none">← Cover Page</a>
+      <a href="index.html" class="nav-chip" style="text-decoration:none">← Cover Page</a>
       <a href="retention-toolkit-section1.html" class="nav-chip" style="text-decoration:none">Section 1 — The Senior Disconnect ✓</a>
       <a href="retention-toolkit-section2-v2.html" class="nav-chip" style="text-decoration:none">Section 2 — The 5-Strategy Stack ✓</a>
       <span class="nav-chip active">Section 3 — Module-by-Module Moves ✓</span>
@@ -901,7 +966,7 @@
   </div>
 
   <div style="text-align:center; margin-top:28px; font-size:11px; color:#94A3B8;">
-    The CCMA Retention Toolkit · Section 3 of 5 · For CCMA/NHA Instructors
+    The CCMA Retention Toolkit · Section 3 of 5 · For Medical Assisting Instructors
   </div>
 
 </div>
