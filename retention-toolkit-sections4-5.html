@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The CCMA Retention Toolkit — Sections 4 & 5</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+
+  :root {
+    --navy:    #0F2240;
+    --teal:    #0D7377;
+    --teallt:  #E0F4F4;
+    --gold:    #E8A020;
+    --goldlt:  #FEF3DC;
+    --rose:    #C0392B;
+    --roselt:  #FDECEA;
+    --purple:  #6D28D9;
+    --purplt:  #F5F3FF;
+    --green:   #065F46;
+    --greenlt: #ECFDF5;
+    --slate:   #475569;
+    --border:  #E2E8F0;
+    --bg:      #F8FAFB;
+    --white:   #FFFFFF;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--navy);
+    line-height: 1.7;
+    font-size: 14px;
+  }
+
+  .print-bar {
+    background: var(--navy);
+    padding: 10px 32px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .print-btn {
+    background: var(--teal);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 7px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .print-btn:hover { background: #0a5c5f; }
+
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 32px 60px;
+  }
+
+  /* ── COVER BANDS ── */
+  .cover-band {
+    border-radius: 16px;
+    padding: 36px 40px;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover-band::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+  }
+  .cover-band::after {
+    content: '';
+    position: absolute;
+    bottom: -30px; left: 60px;
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+  .cb-s4 { background: linear-gradient(135deg, #065F46 0%, #059669 100%); }
+  .cb-s5 { background: linear-gradient(135deg, #7C2D12 0%, #C2410C 100%); }
+
+  .cover-eyebrow {
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: rgba(255,255,255,0.6); margin-bottom: 8px; position: relative;
+  }
+  .cover-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px; color: white;
+    line-height: 1.2; margin-bottom: 10px; position: relative;
+  }
+  .cover-title em { color: var(--gold); font-style: italic; }
+  .cover-sub {
+    font-size: 13px; color: rgba(255,255,255,0.7);
+    max-width: 520px; line-height: 1.6; position: relative;
+  }
+  .cover-chips {
+    display: flex; gap: 8px; flex-wrap: wrap;
+    margin-top: 16px; position: relative;
+  }
+  .cover-chip {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px; padding: 4px 12px;
+    font-size: 11px; color: rgba(255,255,255,0.8); font-weight: 500;
+  }
+
+  /* ── INTRO BOX ── */
+  .intro-box {
+    background: white;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--teal);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin-bottom: 28px;
+    font-size: 13.5px;
+    color: var(--slate);
+    line-height: 1.75;
+  }
+  .intro-box strong { color: var(--navy); }
+
+  /* ── SECTION DIVIDER ── */
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 44px 0 24px;
+  }
+  .section-divider-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .section-divider-label {
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--slate); white-space: nowrap;
+  }
+
+  /* ── RHYTHM GUIDE ── */
+  .rhythm-intro {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+    font-size: 13.5px;
+    color: var(--slate);
+    line-height: 1.75;
+  }
+  .rhythm-intro strong { color: var(--navy); }
+
+  .phase-rhythm {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  .pr-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .pr-foundation .pr-header { background: linear-gradient(135deg, #0F2240, #1e3f6e); }
+  .pr-clinical   .pr-header { background: linear-gradient(135deg, #0D7377, #0a5c5f); }
+  .pr-admin      .pr-header { background: linear-gradient(135deg, #6D28D9, #5b21b6); }
+  .pr-examprep   .pr-header { background: linear-gradient(135deg, var(--gold), #d97706); }
+
+  .pr-phase-label {
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: rgba(255,255,255,0.6); margin-bottom: 2px;
+  }
+  .pr-examprep .pr-phase-label { color: rgba(0,0,0,0.5); }
+  .pr-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 17px; color: white;
+  }
+  .pr-examprep .pr-title { color: var(--navy); }
+  .pr-weeks {
+    margin-left: auto;
+    background: rgba(255,255,255,0.15);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 11px; font-weight: 700;
+    color: rgba(255,255,255,0.9);
+    white-space: nowrap;
+  }
+  .pr-examprep .pr-weeks { color: var(--navy); background: rgba(0,0,0,0.1); }
+
+  .pr-body { padding: 18px 20px; }
+
+  .rhythm-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+    align-items: start;
+  }
+  .rhythm-row:last-child { margin-bottom: 0; }
+  @media (max-width: 600px) {
+    .rhythm-row { grid-template-columns: 1fr; }
+  }
+
+  .rhythm-when {
+    background: var(--navy);
+    color: white;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 11.5px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.4;
+  }
+  .rhythm-what {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: var(--slate);
+    line-height: 1.65;
+  }
+  .rhythm-what strong { color: var(--navy); }
+
+  .rhythm-tip {
+    background: var(--teallt);
+    border-left: 3px solid var(--teal);
+    border-radius: 0 8px 8px 0;
+    padding: 10px 14px;
+    margin-top: 12px;
+    font-size: 12.5px;
+    color: var(--navy);
+    line-height: 1.65;
+  }
+  .rhythm-tip strong { color: var(--teal); }
+
+  /* ── BLANK TEMPLATE ── */
+  .template-band {
+    background: var(--navy);
+    border-radius: 14px;
+    padding: 22px 26px;
+    margin-bottom: 16px;
+  }
+  .template-band h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px; color: white; margin-bottom: 6px;
+  }
+  .template-band p {
+    font-size: 13px; color: rgba(255,255,255,0.65);
+    line-height: 1.65; max-width: 560px;
+  }
+
+  .template-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    margin-bottom: 8px;
+  }
+  .template-table th {
+    background: var(--navy);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 10px 14px;
+    text-align: left;
+  }
+  .template-table td {
+    padding: 12px 14px;
+    font-size: 12.5px;
+    color: var(--slate);
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .template-table tr:last-child td { border-bottom: none; }
+  .template-table tr:nth-child(even) td { background: var(--bg); }
+  .template-table .fill-in {
+    color: #CBD5E1;
+    font-style: italic;
+  }
+  .week-tag {
+    display: inline-block;
+    background: var(--teal);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 10px;
+  }
+  .empty-tag {
+    display: inline-block;
+    background: var(--border);
+    color: var(--slate);
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 10px;
+  }
+
+  /* ── SECTION 5 TROUBLESHOOTING ── */
+  .trouble-intro {
+    background: white;
+    border: 1px solid var(--border);
+    border-left: 4px solid #C2410C;
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin-bottom: 24px;
+    font-size: 13.5px;
+    color: var(--slate);
+    line-height: 1.75;
+  }
+  .trouble-intro strong { color: var(--navy); }
+
+  .trouble-category {
+    margin-bottom: 28px;
+  }
+  .trouble-cat-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--border);
+  }
+  .trouble-cat-icon { font-size: 20px; }
+  .trouble-cat-title {
+    font-size: 13px; font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--navy);
+  }
+
+  .trouble-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .trouble-table th {
+    padding: 10px 16px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-align: left;
+  }
+  .th-problem { background: var(--roselt); color: var(--rose); width: 38%; }
+  .th-fix     { background: var(--greenlt); color: var(--green); width: 38%; }
+  .th-timing  { background: var(--goldlt); color: #92400e; width: 24%; }
+
+  .trouble-table td {
+    padding: 13px 16px;
+    font-size: 13px;
+    color: var(--slate);
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.65;
+  }
+  .trouble-table tr:last-child td { border-bottom: none; }
+  .trouble-table .problem-cell { color: var(--navy); font-weight: 500; }
+  .trouble-table .fix-cell strong { color: var(--green); }
+  .timing-pill {
+    display: inline-block;
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .t-immediate { background: var(--roselt); color: var(--rose); }
+  .t-thisweek  { background: var(--goldlt); color: #92400e; }
+  .t-longterm  { background: var(--teallt); color: var(--teal); }
+
+  /* ── CLOSING ── */
+  .closing-band {
+    background: linear-gradient(135deg, var(--navy) 0%, #1a3a6b 100%);
+    border-radius: 14px;
+    padding: 28px 32px;
+    text-align: center;
+    margin-top: 40px;
+  }
+  .closing-band h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px; color: white; margin-bottom: 10px;
+  }
+  .closing-band p {
+    font-size: 13px; color: rgba(255,255,255,0.65);
+    max-width: 520px; margin: 0 auto 20px; line-height: 1.75;
+  }
+  .section-nav {
+    display: flex; gap: 10px;
+    justify-content: center; flex-wrap: wrap;
+  }
+  .nav-chip {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px; padding: 6px 16px;
+    font-size: 11.5px; color: rgba(255,255,255,0.7); font-weight: 500;
+  }
+  .nav-chip.done {
+    background: var(--teal); border-color: var(--teal);
+    color: white; font-weight: 700;
+  }
+
+  @media print {
+    .print-bar { display: none; }
+    .page { padding: 20px; }
+    .phase-rhythm, .trouble-category { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="print-bar">
+  <button class="print-btn" onclick="window.print()">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+    Print / Save as PDF
+  </button>
+</div>
+
+<div class="page">
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- SECTION 4 -->
+  <!-- ═══════════════════════════════════════ -->
+
+  <div class="cover-band cb-s4">
+    <div class="cover-eyebrow">The CCMA Retention Toolkit · Section 4 of 5</div>
+    <div class="cover-title">Pacing <em>Retention In</em><br>The Weekly Rhythm That Works</div>
+    <div class="cover-sub">A recommended retention rhythm across your course — plus a blank template to map it into whatever schedule you're already running.</div>
+    <div class="cover-chips">
+      <span class="cover-chip">📋 NHA CCMA Aligned</span>
+      <span class="cover-chip">📅 18-Week Framework</span>
+      <span class="cover-chip">✅ Adaptable to Any Schedule</span>
+      <span class="cover-chip">🖨️ Includes Blank Template</span>
+    </div>
+  </div>
+
+  <div class="rhythm-intro">
+    <strong>The biggest mistake CCMA teachers make with retention isn't doing it wrong — it's doing it only at the end.</strong> Exam prep week is not where retention happens. It's where retention is tested. The teachers who see the strongest NHA pass rates build review into the fabric of every single week, starting in Week 1. This section shows you what that rhythm looks like in practice, then gives you a blank template to map it onto your own schedule.
+  </div>
+
+  <!-- PHASE 1 RHYTHM -->
+  <div class="phase-rhythm pr-foundation">
+    <div class="pr-header">
+      <div>
+        <div class="pr-phase-label">Phase 1 · Foundation</div>
+        <div class="pr-title">Weeks 1–5: Build the Habit Before the Content Gets Hard</div>
+      </div>
+      <div class="pr-weeks">Weeks 1–5</div>
+    </div>
+    <div class="pr-body">
+
+      <div class="rhythm-row">
+        <div class="rhythm-when">Every class<br>First 3–5 min</div>
+        <div class="rhythm-what"><strong>No-notes recall question.</strong> One question, out loud, no pressure. Pick a concept from the previous class. This is not a grade — it's a warm-up. Do this every single day and don't skip it. You're building the habit, not the content.</div>
+      </div>
+
+      <div class="rhythm-row">
+        <div class="rhythm-when">Once per week<br>~5 min</div>
+        <div class="rhythm-what"><strong>Callback to Week 1.</strong> Even when you're in Week 4, spend 5 minutes revisiting roles and responsibilities or HIPAA. The NHA exam treats all modules equally — Phase 1 content is not "done" just because you moved on.</div>
+      </div>
+
+      <div class="rhythm-row">
+        <div class="rhythm-when">End of Week 5</div>
+        <div class="rhythm-what"><strong>Phase 1 check-off.</strong> Before moving into clinical skills, do a quick 5-item demonstration check-off on the Foundation content. Not a test — a checkpoint. Students who can't demonstrate Phase 1 concepts in Week 5 will not be ready for the NHA exam in Week 18.</div>
+      </div>
+
+      <div class="rhythm-tip">
+        <strong>Phase 1 retention tip:</strong> Foundation content feels abstract — students don't see why HIPAA or scope of practice "matters" yet. Connect every callback question to a real consequence: "What happens to the MA if this goes wrong?" That one shift makes abstract content feel urgent.
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 2 RHYTHM -->
+  <div class="phase-rhythm pr-clinical">
+    <div class="pr-header">
+      <div>
+        <div class="pr-phase-label">Phase 2 · Clinical Skills</div>
+        <div class="pr-title">Weeks 6–13: Stack Skills Without Losing the Foundation</div>
+      </div>
+      <div class="pr-weeks">Weeks 6–13</div>
+    </div>
+    <div class="pr-body">
+
+      <div class="rhythm-row">
+        <div class="rhythm-when">Every class<br>First 3–5 min</div>
+        <div class="rhythm-what"><strong>Continue daily recall — now rotate between current and past content.</strong> One day: current module question. Next day: callback to Phase 1 or a prior Phase 2 unit. Students should never be surprised by a Phase 1 question in Week 10 — it should feel routine.</div>
+      </div>
+
+      <div class="rhythm-row">
+        <div class="rhythm-when">Every Friday<br>~10 min</div>
+        <div class="rhythm-what"><strong>Callback Friday.</strong> Dedicate the first 10 minutes of Friday class to a topic from 2–3 weeks prior. One question, one scenario, one mnemonic review. Rotate through all Phase 2 modules so nothing gets left behind. Label it on your lesson plan so it never gets cut.</div>
+      </div>
+
+      <div class="rhythm-row">
+        <div class="rhythm-when">End of each unit<br>~15–20 min</div>
+        <div class="rhythm-what"><strong>Unit check-off before moving on.</strong> Don't advance to the next module until students have demonstrated the current one. A 5-minute check-off at the end of each unit catches gaps before they compound. The students who struggle on the NHA exam are usually the ones who had gaps in Weeks 6–10 that were never addressed.</div>
+      </div>
+
+      <div class="rhythm-row">
+        <div class="rhythm-when">Week 9 midpoint<br>~30 min</div>
+        <div class="rhythm-what"><strong>Phase 1 + 2 cumulative review.</strong> A single class period dedicated to reviewing everything so far — not teaching new content, just retrieval. Use the activities from Section 3 in rapid-fire rotation. This is your early warning system before the exam prep crunch.</div>
+      </div>
+
+      <div class="rhythm-tip">
+        <strong>Phase 2 retention tip:</strong> Clinical skills weeks are the most exciting and the most overwhelming. Students are learning procedures AND memorizing normal values AND doing documentation simultaneously. Keep the recall questions short and focused on one thing at a time — don't try to review everything every day.
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 3 RHYTHM -->
+  <div class="phase-rhythm pr-admin">
+    <div class="pr-header">
+      <div>
+        <div class="pr-phase-label">Phase 3 · Admin & Simulation</div>
+        <div class="pr-title">Weeks 14–17: Integrate Everything, Lose Nothing</div>
+      </div>
+      <div class="pr-weeks">Weeks 14–17</div>
+    </div>
+    <div class="pr-body">
+
+      <div class="rhythm-row">
+        <div class="rhythm-when">Every class<br>First 5 min</div>
+        <div class="rhythm-what"><strong>Mixed-domain recall.</strong> Now your daily questions should draw from any module — Phase 1, 2, or 3. Students should not be able to predict which topic is coming. This unpredictability mirrors how the NHA exam sequences questions and builds the recall flexibility that separates passing from failing.</div>
+      </div>
+
+      <div class="rhythm-row">
+        <div class="rhythm-when">Twice per week<br>~5 min each</div>
+        <div class="rhythm-what"><strong>Hard module callbacks.</strong> EKG, phlebotomy order of draw, and billing code types should appear in your recall rotation at least twice per week during Phase 3. These are the highest-stakes recall items and they need the most repetition closest to exam day.</div>
+      </div>
+
+      <div class="rhythm-row">
+        <div class="rhythm-when">Week 17</div>
+        <div class="rhythm-what"><strong>Full simulation as retention event.</strong> A complete simulated patient encounter — intake through checkout — is the most powerful retention tool in your entire course. Students recall everything simultaneously in context. This is not just a fun capstone activity. It is a comprehensive retrieval practice session.</div>
+      </div>
+
+      <div class="rhythm-tip">
+        <strong>Phase 3 retention tip:</strong> Admin content is the easiest to skip when time gets tight. Don't. Billing, coding, and care coordination make up a significant portion of the NHA exam. If students treat Phase 3 as a cooldown after the clinical skills excitement, they will lose points they didn't have to lose.
+      </div>
+    </div>
+  </div>
+
+  <!-- EXAM PREP RHYTHM -->
+  <div class="phase-rhythm pr-examprep">
+    <div class="pr-header">
+      <div>
+        <div class="pr-phase-label">Exam Prep · Final Push</div>
+        <div class="pr-title">Week 18: Sharpen What's There — Don't Try to Build What Isn't</div>
+      </div>
+      <div class="pr-weeks">Week 18</div>
+    </div>
+    <div class="pr-body">
+
+      <div class="rhythm-row">
+        <div class="rhythm-when">Days 1–2</div>
+        <div class="rhythm-what"><strong>Practice test by domain.</strong> Run a full NHA practice test and score it by module. Don't just give a total score — identify which domains students are weakest in. That data drives the rest of the week. Without it you're reviewing everything equally, which means spending time on what students already know.</div>
+      </div>
+
+      <div class="rhythm-row">
+        <div class="rhythm-when">Days 3–4</div>
+        <div class="rhythm-what"><strong>Targeted weak-area review only.</strong> Use your practice test domain breakdown. If 70% of students missed phlebotomy questions, spend a full session on phlebotomy. Don't re-teach — retrieve. Use the Section 3 activities for the weak modules. Fast, active, no new content.</div>
+      </div>
+
+      <div class="rhythm-row">
+        <div class="rhythm-when">Day 5<br>Exam eve</div>
+        <div class="rhythm-what"><strong>Confidence session, not a cram session.</strong> Light review. Mnemonics only. Remind students that what they know is already in their heads — tonight's job is rest, not re-reading. The students who sleep and eat before the NHA exam consistently outperform the ones who study until midnight.</div>
+      </div>
+
+      <div class="rhythm-tip">
+        <strong>Exam week retention tip:</strong> The worst thing you can do in Week 18 is introduce new material or try to fill large gaps. If a student doesn't know the chain of infection in Week 18, one more lecture won't fix it. Focus on retrieval, confidence, and test-taking strategy — not content coverage.
+      </div>
+    </div>
+  </div>
+
+  <!-- BLANK TEMPLATE -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <div class="section-divider-label">Blank Template — Make It Yours</div>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="template-band">
+    <h3>Your Retention Rhythm Template</h3>
+    <p>Copy this structure into your own pacing guide. Fill in the "Callback Topic" and "Check-Off" columns week by week. The daily recall and Callback Friday slots stay consistent — only the content rotates. You don't need to plan every question in advance. Just know which module you're reaching back to each week.</p>
+  </div>
+
+  <table class="template-table">
+    <thead>
+      <tr>
+        <th>Week</th>
+        <th>Current Module</th>
+        <th>Daily Recall Topic</th>
+        <th>Callback Friday Topic</th>
+        <th>Check-Off / Milestone</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="week-tag">W1</span></td>
+        <td>Roles & Responsibilities</td>
+        <td>Scope of practice scenarios</td>
+        <td class="fill-in">— (first week)</td>
+        <td class="fill-in">—</td>
+      </tr>
+      <tr>
+        <td><span class="week-tag">W2</span></td>
+        <td>Communication</td>
+        <td>Communication barrier types</td>
+        <td>Roles & Responsibilities</td>
+        <td class="fill-in">—</td>
+      </tr>
+      <tr>
+        <td><span class="week-tag">W3</span></td>
+        <td>Ethics & Law / HIPAA</td>
+        <td>HIPAA identifiers + violations</td>
+        <td>Communication</td>
+        <td class="fill-in">—</td>
+      </tr>
+      <tr>
+        <td><span class="week-tag">W4</span></td>
+        <td>A&P + Terminology</td>
+        <td>Prefix/root/suffix decoding</td>
+        <td>Ethics & HIPAA</td>
+        <td class="fill-in">—</td>
+      </tr>
+      <tr>
+        <td><span class="week-tag">W5</span></td>
+        <td>Infection Control</td>
+        <td>Chain of infection + breaks</td>
+        <td>A&P / Terminology</td>
+        <td>Phase 1 Check-Off</td>
+      </tr>
+      <tr>
+        <td><span class="empty-tag">W6</span></td>
+        <td class="fill-in">Your module here</td>
+        <td class="fill-in">Your recall topic</td>
+        <td class="fill-in">Callback: W3–4 topic</td>
+        <td class="fill-in">—</td>
+      </tr>
+      <tr>
+        <td><span class="empty-tag">W7</span></td>
+        <td class="fill-in">Your module here</td>
+        <td class="fill-in">Your recall topic</td>
+        <td class="fill-in">Callback: W4–5 topic</td>
+        <td class="fill-in">—</td>
+      </tr>
+      <tr>
+        <td><span class="empty-tag">W8</span></td>
+        <td class="fill-in">Your module here</td>
+        <td class="fill-in">Your recall topic</td>
+        <td class="fill-in">Callback: W5–6 topic</td>
+        <td class="fill-in">—</td>
+      </tr>
+      <tr>
+        <td><span class="empty-tag">W9</span></td>
+        <td class="fill-in">Your module here</td>
+        <td class="fill-in">Your recall topic</td>
+        <td class="fill-in">Callback: W6–7 topic</td>
+        <td>Phase 1+2 Cumulative Review</td>
+      </tr>
+      <tr>
+        <td><span class="empty-tag">W10–13</span></td>
+        <td class="fill-in">Your modules here</td>
+        <td class="fill-in">Rotate: current + past</td>
+        <td class="fill-in">Callback: 2–3 wks prior</td>
+        <td class="fill-in">Unit check-offs each week</td>
+      </tr>
+      <tr>
+        <td><span class="empty-tag">W14–17</span></td>
+        <td class="fill-in">Admin modules</td>
+        <td class="fill-in">Mixed-domain recall</td>
+        <td class="fill-in">Hard modules: EKG · Phlebotomy · Billing</td>
+        <td class="fill-in">Full simulation Week 17</td>
+      </tr>
+      <tr>
+        <td><span class="empty-tag">W18</span></td>
+        <td>Exam Prep</td>
+        <td>Practice test by domain</td>
+        <td>Weak-area targeted review</td>
+        <td>🎓 NHA CCMA Exam</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- SECTION 5 -->
+  <!-- ═══════════════════════════════════════ -->
+
+  <div class="section-divider" style="margin-top: 56px;">
+    <div class="section-divider-line"></div>
+    <div class="section-divider-label">Section 5 of 5</div>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="cover-band cb-s5">
+    <div class="cover-eyebrow">The CCMA Retention Toolkit · Section 5 of 5</div>
+    <div class="cover-title">The <em>"It's Not Clicking"</em><br>Troubleshooting Guide</div>
+    <div class="cover-sub">A quick-reference table for when students aren't retaining — specific problems, specific fixes, and when to use them. Scan it, find your situation, try the fix.</div>
+    <div class="cover-chips">
+      <span class="cover-chip">🔍 Scan-Friendly Format</span>
+      <span class="cover-chip">⚡ Immediate Action Items</span>
+      <span class="cover-chip">📋 NHA CCMA Specific</span>
+    </div>
+  </div>
+
+  <div class="trouble-intro">
+    <strong>How to use this section:</strong> Find the problem that matches what you're seeing in class. The fix column tells you exactly what to try. The timing column tells you whether it's something to do tomorrow, this week, or build into your long-term plan. You don't have to try everything at once — pick the most urgent problem first.
+  </div>
+
+  <!-- CATEGORY 1: RECALL PROBLEMS -->
+  <div class="trouble-category">
+    <div class="trouble-cat-header">
+      <div class="trouble-cat-icon">🧠</div>
+      <div class="trouble-cat-title">Recall & Memory Problems</div>
+    </div>
+    <table class="trouble-table">
+      <thead>
+        <tr>
+          <th class="th-problem">The Problem</th>
+          <th class="th-fix">The Fix</th>
+          <th class="th-timing">When to Use It</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="problem-cell">Students understand content in class but can't recall it on the practice test</td>
+          <td class="fix-cell"><strong>Switch from re-reading to retrieval.</strong> Replace any review activity that involves looking at notes with one that requires generating answers from memory. Even 3 no-notes questions at the start of class makes a measurable difference within 2 weeks.</td>
+          <td><span class="timing-pill t-immediate">Tomorrow</span></td>
+        </tr>
+        <tr>
+          <td class="problem-cell">Students remember content from last week but have forgotten everything from 3+ weeks ago</td>
+          <td class="fix-cell"><strong>Add Callback Friday.</strong> Dedicate 10 minutes every Friday to a topic from 2–3 weeks prior. Do this consistently for 4 weeks and watch long-term retention stabilize. The forgetting curve is predictable — interrupt it on a schedule.</td>
+          <td><span class="timing-pill t-thisweek">This Week</span></td>
+        </tr>
+        <tr>
+          <td class="problem-cell">Students can define terms but can't apply them in patient scenarios</td>
+          <td class="fix-cell"><strong>Replace definition-based review with scenario-based recall.</strong> Instead of "define tachycardia," ask "your patient's pulse is 112 — what do you do next?" The NHA exam never asks for a definition. Stop reviewing in a format the exam doesn't use.</td>
+          <td><span class="timing-pill t-immediate">Tomorrow</span></td>
+        </tr>
+        <tr>
+          <td class="problem-cell">Students mix up similar concepts (ICD vs CPT, EKG leads, tube colors)</td>
+          <td class="fix-cell"><strong>Give each concept a single concrete anchor image, not a definition.</strong> ICD = WHY. CPT = WHAT. HCPCS = STUFF. The mnemonic works because it replaces an abstract label with a word students already know. One anchor per confused pair — no more.</td>
+          <td><span class="timing-pill t-immediate">Tomorrow</span></td>
+        </tr>
+        <tr>
+          <td class="problem-cell">Students do well on unit quizzes but struggle on cumulative practice tests</td>
+          <td class="fix-cell"><strong>Run mixed-domain recall daily starting in Week 6.</strong> If students only ever answer questions about the current unit, they lose access to prior units. The NHA exam is cumulative — your daily recall must be too, at least 2–3 days per week.</td>
+          <td><span class="timing-pill t-thisweek">This Week</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CATEGORY 2: ENGAGEMENT PROBLEMS -->
+  <div class="trouble-category">
+    <div class="trouble-cat-header">
+      <div class="trouble-cat-icon">😴</div>
+      <div class="trouble-cat-title">Engagement & Motivation Problems</div>
+    </div>
+    <table class="trouble-table">
+      <thead>
+        <tr>
+          <th class="th-problem">The Problem</th>
+          <th class="th-fix">The Fix</th>
+          <th class="th-timing">When to Use It</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="problem-cell">Seniors are checked out — senioritis is real and visible</td>
+          <td class="fix-cell"><strong>Connect content to their immediate future, not a distant exam.</strong> "You start your first clinical rotation in 4 months. Your preceptor will ask you this on Day 1." Future-self framing activates motivation that abstract test prep doesn't. Use it daily, not just once.</td>
+          <td><span class="timing-pill t-immediate">Tomorrow</span></td>
+        </tr>
+        <tr>
+          <td class="problem-cell">Students don't study outside of class</td>
+          <td class="fix-cell"><strong>Stop depending on outside studying and build retention inside class time.</strong> Design your class so that students who never open a book at home still get enough retrieval practice to pass. If your pass rate depends on homework, you're at the mercy of senior behavior. You can't control that — but you can control what happens in your room.</td>
+          <td><span class="timing-pill t-longterm">Long-Term</span></td>
+        </tr>
+        <tr>
+          <td class="problem-cell">Energy crashes mid-class — students disengage after the first hour</td>
+          <td class="fix-cell"><strong>Place a game-based activity at the energy low point, not at the end.</strong> If your class is 90 minutes, the crash usually hits around minute 50–60. A 10-minute competitive review game at that exact moment resets the room. Don't save it for the last 10 minutes when it's already too late.</td>
+          <td><span class="timing-pill t-thisweek">This Week</span></td>
+        </tr>
+        <tr>
+          <td class="problem-cell">Students don't see the point of administrative content</td>
+          <td class="fix-cell"><strong>Reframe every admin concept as patient protection or clinic survival.</strong> "If you code this wrong, the claim gets denied and the patient gets a bill they shouldn't have." That sentence does more for engagement than any amount of enthusiasm about revenue cycles.</td>
+          <td><span class="timing-pill t-immediate">Tomorrow</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CATEGORY 3: EXAM-SPECIFIC -->
+  <div class="trouble-category">
+    <div class="trouble-cat-header">
+      <div class="trouble-cat-icon">📝</div>
+      <div class="trouble-cat-title">Exam Performance Problems</div>
+    </div>
+    <table class="trouble-table">
+      <thead>
+        <tr>
+          <th class="th-problem">The Problem</th>
+          <th class="th-fix">The Fix</th>
+          <th class="th-timing">When to Use It</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="problem-cell">Practice test scores aren't improving despite regular review</td>
+          <td class="fix-cell"><strong>Score practice tests by domain, not just total.</strong> A flat total score hides which modules are dragging it down. Once you know the weak domains, you can stop reviewing content students already know and focus the time where it actually moves the needle.</td>
+          <td><span class="timing-pill t-immediate">Tomorrow</span></td>
+        </tr>
+        <tr>
+          <td class="problem-cell">Students know the content but freeze or overthink on exam questions</td>
+          <td class="fix-cell"><strong>Teach the NHA question format explicitly.</strong> Show students how NHA frames distractors — the "almost right" answer is almost always about scope of practice or sequence. Practice eliminating two options first, then choosing between the remaining two. The strategy is learnable and it raises scores fast.</td>
+          <td><span class="timing-pill t-thisweek">This Week</span></td>
+        </tr>
+        <tr>
+          <td class="problem-cell">Students consistently miss the same 2–3 module areas on every practice test</td>
+          <td class="fix-cell"><strong>Use the Section 3 activity for that specific module every week until scores improve.</strong> Don't add more content — add more retrieval. A student who has sorted tube colors 6 times in different formats will not miss order of draw on exam day. Repetition in varied formats beats re-teaching every time.</td>
+          <td><span class="timing-pill t-longterm">Long-Term</span></td>
+        </tr>
+        <tr>
+          <td class="problem-cell">Students pass practice tests but fail the actual NHA exam</td>
+          <td class="fix-cell"><strong>Check whether your practice questions match NHA difficulty and format.</strong> Some third-party practice resources use simpler question stems than the actual exam. If students are only practicing on easy questions, the real exam feels harder than it should. Use official NHA practice materials as your primary measure.</td>
+          <td><span class="timing-pill t-longterm">Long-Term</span></td>
+        </tr>
+        <tr>
+          <td class="problem-cell">Students cram the night before and still don't pass</td>
+          <td class="fix-cell"><strong>The night before is too late — and that's a curriculum design problem, not a student problem.</strong> If students feel they need to cram, retention didn't happen during the course. Audit your last 4 weeks: how many times did each module appear in recall practice? If the answer is once or twice, increase the repetition frequency starting now.</td>
+          <td><span class="timing-pill t-longterm">Long-Term</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CATEGORY 4: TEACHER BANDWIDTH -->
+  <div class="trouble-category">
+    <div class="trouble-cat-header">
+      <div class="trouble-cat-icon">🧑‍🏫</div>
+      <div class="trouble-cat-title">Teacher Bandwidth Problems</div>
+    </div>
+    <table class="trouble-table">
+      <thead>
+        <tr>
+          <th class="th-problem">The Problem</th>
+          <th class="th-fix">The Fix</th>
+          <th class="th-timing">When to Use It</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="problem-cell">You don't have time to plan extra retention activities on top of everything else</td>
+          <td class="fix-cell"><strong>Retrieval practice requires zero extra prep if you do it verbally.</strong> One question out loud at the start of class costs you nothing to plan. Write your 3 recall questions for the week on a sticky note on Sunday night. That's the whole system. Don't let perfect be the enemy of daily.</td>
+          <td><span class="timing-pill t-immediate">Tomorrow</span></td>
+        </tr>
+        <tr>
+          <td class="problem-cell">You're not sure which content to prioritize for callbacks</td>
+          <td class="fix-cell"><strong>Use your practice test domain breakdown to decide.</strong> Whatever module students are weakest in gets the most callback time. If you don't have practice test data yet, default to: infection control, vital signs normals, phlebotomy order of draw, and billing code types — these four areas are consistently high-frequency on the NHA exam.</td>
+          <td><span class="timing-pill t-thisweek">This Week</span></td>
+        </tr>
+        <tr>
+          <td class="problem-cell">You're a first-year CCMA teacher and feel like you're drowning</td>
+          <td class="fix-cell"><strong>Do one thing from this toolkit tomorrow.</strong> Not five things. One. Start daily recall with a single verbal question at the start of class. Do it every day for two weeks before adding anything else. Retention improvement is cumulative — small consistent moves beat elaborate plans you can't sustain.</td>
+          <td><span class="timing-pill t-immediate">Tomorrow</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CLOSING -->
+  <div class="closing-band">
+    <h3>You've got this. And now you've got the toolkit.</h3>
+    <p>Five sections. One goal: more of your students passing the NHA CCMA exam — not because you worked harder, but because you shifted how retention happens in your classroom. Start with one strategy. Build the rhythm. Let it compound. Your students are capable of passing. This is how you help them get there.</p>
+    <div class="section-nav">
+      <span class="nav-chip done">Section 1 — The Senior Disconnect ✓</span>
+      <span class="nav-chip done">Section 2 — The 5-Strategy Stack ✓</span>
+      <span class="nav-chip done">Section 3 — Module-by-Module Moves ✓</span>
+      <span class="nav-chip done">Section 4 — Pacing Retention In ✓</span>
+      <span class="nav-chip done">Section 5 — Troubleshooting Guide ✓</span>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-top:28px; font-size:11px; color:#94A3B8;">
+    The CCMA Retention Toolkit · Sections 4 & 5 of 5 · For CCMA/NHA Instructors
+  </div>
+
+</div>
+</body>
+</html>

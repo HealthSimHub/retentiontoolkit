@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The CCMA Retention Toolkit — Section 3: Module-by-Module Moves</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+
+  :root {
+    --navy:    #0F2240;
+    --teal:    #0D7377;
+    --teallt:  #E0F4F4;
+    --gold:    #E8A020;
+    --goldlt:  #FEF3DC;
+    --rose:    #C0392B;
+    --roselt:  #FDECEA;
+    --purple:  #6D28D9;
+    --purplt:  #F5F3FF;
+    --green:   #065F46;
+    --greenlt: #ECFDF5;
+    --slate:   #475569;
+    --border:  #E2E8F0;
+    --bg:      #F8FAFB;
+    --white:   #FFFFFF;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--navy);
+    line-height: 1.7;
+    font-size: 14px;
+  }
+
+  .print-bar {
+    background: var(--navy);
+    padding: 10px 32px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .print-btn {
+    background: var(--teal);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 7px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .print-btn:hover { background: #0a5c5f; }
+
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 32px 60px;
+  }
+
+  /* COVER */
+  .cover-band {
+    background: var(--navy);
+    border-radius: 16px;
+    padding: 36px 40px;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover-band::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: rgba(13,115,119,0.18);
+  }
+  .cover-band::after {
+    content: '';
+    position: absolute;
+    bottom: -30px; left: 60px;
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    background: rgba(232,160,32,0.10);
+  }
+  .cover-eyebrow {
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 8px; position: relative;
+  }
+  .cover-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 30px; color: white;
+    line-height: 1.2; margin-bottom: 10px; position: relative;
+  }
+  .cover-title em { color: var(--gold); font-style: italic; }
+  .cover-sub {
+    font-size: 13px; color: rgba(255,255,255,0.65);
+    max-width: 520px; line-height: 1.6; position: relative;
+  }
+  .cover-chips {
+    display: flex; gap: 8px; flex-wrap: wrap;
+    margin-top: 18px; position: relative;
+  }
+  .cover-chip {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 20px; padding: 4px 12px;
+    font-size: 11px; color: rgba(255,255,255,0.75); font-weight: 500;
+  }
+
+  /* INTRO */
+  .intro-box {
+    background: white;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--teal);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin-bottom: 32px;
+    font-size: 13.5px;
+    color: var(--slate);
+    line-height: 1.75;
+  }
+  .intro-box strong { color: var(--navy); }
+
+  /* PHASE HEADERS */
+  .phase-header-band {
+    border-radius: 12px;
+    padding: 18px 24px;
+    margin-bottom: 16px;
+    margin-top: 36px;
+  }
+  .phase-header-band:first-of-type { margin-top: 0; }
+  .ph-foundation { background: linear-gradient(135deg, #0F2240, #1e3f6e); }
+  .ph-clinical    { background: linear-gradient(135deg, #0D7377, #0a5c5f); }
+  .ph-admin       { background: linear-gradient(135deg, #6D28D9, #5b21b6); }
+
+  .ph-eyebrow {
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: rgba(255,255,255,0.55); margin-bottom: 4px;
+  }
+  .ph-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px; color: white; margin-bottom: 6px;
+  }
+  .ph-sub {
+    font-size: 12.5px; color: rgba(255,255,255,0.65); line-height: 1.6;
+  }
+  .ph-chips {
+    display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px;
+  }
+  .ph-chip {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px; padding: 3px 10px;
+    font-size: 11px; color: rgba(255,255,255,0.8); font-weight: 600;
+  }
+
+  /* MODULE CARDS */
+  .module-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  .module-card.hard-module {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 2px rgba(232,160,32,0.15);
+  }
+
+  .module-top {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+  }
+  .module-icon { font-size: 22px; flex-shrink: 0; }
+  .module-title-wrap { flex: 1; }
+  .module-nha {
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 2px;
+  }
+  .module-title {
+    font-size: 15px; font-weight: 700; color: var(--navy);
+  }
+  .hard-badge {
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 9px; font-weight: 800;
+    letter-spacing: 1px; text-transform: uppercase;
+    padding: 3px 10px; border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .module-body { padding: 18px 20px; }
+
+  /* HARD MODULE CALLOUT */
+  .hard-callout {
+    background: var(--goldlt);
+    border: 1px solid #fcd34d;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    color: var(--navy);
+    line-height: 1.7;
+  }
+  .hard-callout-label {
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 6px;
+  }
+
+  /* MNEMONIC + ACTIVITY GRID */
+  .move-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 4px;
+  }
+  @media (max-width: 600px) {
+    .move-grid { grid-template-columns: 1fr; }
+  }
+
+  .move-box {
+    border-radius: 10px;
+    padding: 16px 18px;
+  }
+  .move-mnemonic {
+    background: var(--teallt);
+    border: 1px solid #a7d8d8;
+  }
+  .move-activity {
+    background: var(--purplt);
+    border: 1px solid #c4b5fd;
+  }
+
+  .move-label {
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    margin-bottom: 8px; display: flex; align-items: center; gap: 5px;
+  }
+  .move-mnemonic .move-label { color: var(--teal); }
+  .move-activity .move-label { color: var(--purple); }
+
+  .mnemonic-word {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px; color: var(--navy);
+    margin-bottom: 6px; letter-spacing: 1px;
+  }
+  .mnemonic-breakdown {
+    font-size: 12px; color: var(--slate);
+    line-height: 1.8;
+  }
+  .mnemonic-breakdown span {
+    font-weight: 700; color: var(--navy);
+  }
+
+  .activity-name {
+    font-weight: 700; color: var(--navy);
+    font-size: 13px; margin-bottom: 6px;
+  }
+  .activity-desc {
+    font-size: 12.5px; color: var(--slate);
+    line-height: 1.7;
+  }
+  .activity-time {
+    display: inline-block;
+    background: var(--purple);
+    color: white;
+    font-size: 9px; font-weight: 700;
+    padding: 2px 8px; border-radius: 10px;
+    margin-top: 8px; letter-spacing: 0.5px;
+  }
+
+  /* CLOSING */
+  .closing-band {
+    background: linear-gradient(135deg, var(--navy) 0%, #1a3a6b 100%);
+    border-radius: 14px;
+    padding: 28px 32px;
+    text-align: center;
+    margin-top: 40px;
+  }
+  .closing-band h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px; color: white; margin-bottom: 10px;
+  }
+  .closing-band p {
+    font-size: 13px; color: rgba(255,255,255,0.65);
+    max-width: 500px; margin: 0 auto 20px; line-height: 1.75;
+  }
+  .section-nav {
+    display: flex; gap: 10px;
+    justify-content: center; flex-wrap: wrap;
+  }
+  .nav-chip {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px; padding: 6px 16px;
+    font-size: 11.5px; color: rgba(255,255,255,0.7); font-weight: 500;
+  }
+  .nav-chip.active {
+    background: var(--teal); border-color: var(--teal);
+    color: white; font-weight: 700;
+  }
+  .nav-chip.next {
+    background: var(--gold); border-color: var(--gold);
+    color: var(--navy); font-weight: 700;
+  }
+
+  @media print {
+    .print-bar { display: none; }
+    .page { padding: 20px; }
+    .module-card { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="print-bar">
+  <button class="print-btn" onclick="window.print()">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+    Print / Save as PDF
+  </button>
+</div>
+
+<div class="page">
+
+  <!-- COVER -->
+  <div class="cover-band">
+    <div class="cover-eyebrow">The CCMA Retention Toolkit · Section 3 of 5</div>
+    <div class="cover-title">Module-by-Module <em>Retention Moves</em></div>
+    <div class="cover-sub">One mnemonic and one activity for every phase of the NHA CCMA curriculum — organized the way you actually teach it. The hardest modules get extra attention.</div>
+    <div class="cover-chips">
+      <span class="cover-chip">📋 NHA CCMA Aligned</span>
+      <span class="cover-chip">🏫 High School Seniors</span>
+      <span class="cover-chip">✅ Any Classroom Structure</span>
+      <span class="cover-chip">⭐ Hard Module Callouts</span>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="intro-box">
+    This section gives you a <strong>mnemonic and a classroom activity</strong> for every phase of the NHA CCMA curriculum. Use the mnemonic as a quick recall anchor — something students can reach for the moment they go blank on an exam question. Use the activity to build the retrieval muscle before test day arrives. Modules marked <strong style="color: var(--gold);">★ THIS ONE'S HARD</strong> include an extra note on why students typically struggle and what to watch for.
+  </div>
+
+  <!-- ═══════════════════════════════ -->
+  <!-- PHASE 1: FOUNDATION -->
+  <!-- ═══════════════════════════════ -->
+  <div class="phase-header-band ph-foundation">
+    <div class="ph-eyebrow">Phase 1 · Weeks 1–5</div>
+    <div class="ph-title">Foundation</div>
+    <div class="ph-sub">The retention challenge in Phase 1 is abstract content. Roles, ethics, law, and terminology don't feel clinical yet — students aren't sure why it matters. Anchor everything to a "what happens if you get this wrong on the job" moment and the engagement flips immediately.</div>
+    <div class="ph-chips">
+      <span class="ph-chip">Roles & Responsibilities</span>
+      <span class="ph-chip">Communication</span>
+      <span class="ph-chip">Ethics & Law</span>
+      <span class="ph-chip">A&P + Terminology</span>
+      <span class="ph-chip">Infection Control</span>
+    </div>
+  </div>
+
+  <!-- Roles -->
+  <div class="module-card">
+    <div class="module-top">
+      <div class="module-icon">🏥</div>
+      <div class="module-title-wrap">
+        <div class="module-nha">NHA Module 1 + 12</div>
+        <div class="module-title">Roles & Responsibilities</div>
+      </div>
+    </div>
+    <div class="module-body">
+      <div class="move-grid">
+        <div class="move-box move-mnemonic">
+          <div class="move-label">🧠 Mnemonic</div>
+          <div class="mnemonic-word">PACE</div>
+          <div class="mnemonic-breakdown">
+            <span>P</span>atient care first<br>
+            <span>A</span>ccountability to your scope<br>
+            <span>C</span>ommunication with the team<br>
+            <span>E</span>thics in every interaction
+          </div>
+        </div>
+        <div class="move-box move-activity">
+          <div class="move-label">🎯 Activity</div>
+          <div class="activity-name">Scope or Nope?</div>
+          <div class="activity-desc">Read 10 clinical scenarios aloud. Students write "Scope" or "Nope" on a whiteboard or index card — is this within the MA's scope of practice or not? Debrief each answer with a one-sentence rationale. Fast, competitive, zero prep.</div>
+          <span class="activity-time">⏱ 10–12 min</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Communication -->
+  <div class="module-card">
+    <div class="module-top">
+      <div class="module-icon">🗣️</div>
+      <div class="module-title-wrap">
+        <div class="module-nha">NHA Module 12</div>
+        <div class="module-title">Communication & Customer Service</div>
+      </div>
+    </div>
+    <div class="module-body">
+      <div class="move-grid">
+        <div class="move-box move-mnemonic">
+          <div class="move-label">🧠 Mnemonic</div>
+          <div class="mnemonic-word">CLEAR</div>
+          <div class="mnemonic-breakdown">
+            <span>C</span>oncise message<br>
+            <span>L</span>isten actively<br>
+            <span>E</span>mpathy first<br>
+            <span>A</span>sk to confirm understanding<br>
+            <span>R</span>espect all barriers
+          </div>
+        </div>
+        <div class="move-box move-activity">
+          <div class="move-label">🎯 Activity</div>
+          <div class="activity-name">Telephone Triage Role-Play</div>
+          <div class="activity-desc">Pairs take turns as the MA and a "patient" calling with a concern. One student has a script with hidden emotional cues (anxious, confused, angry). The "MA" must respond professionally. Class votes on whether the communication was effective and names one thing they'd change.</div>
+          <span class="activity-time">⏱ 12–15 min</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ethics & Law -->
+  <div class="module-card">
+    <div class="module-top">
+      <div class="module-icon">⚖️</div>
+      <div class="module-title-wrap">
+        <div class="module-nha">NHA Module 13</div>
+        <div class="module-title">Medical Ethics, Law & HIPAA</div>
+      </div>
+    </div>
+    <div class="module-body">
+      <div class="move-grid">
+        <div class="move-box move-mnemonic">
+          <div class="move-label">🧠 Mnemonic</div>
+          <div class="mnemonic-word">HIPAA BITES</div>
+          <div class="mnemonic-breakdown">
+            <span>B</span>reach must be reported<br>
+            <span>I</span>dentifiers must be protected (18 of them)<br>
+            <span>T</span>reat minimum necessary info only<br>
+            <span>E</span>mployees need training<br>
+            <span>S</span>ign the authorization before releasing records
+          </div>
+        </div>
+        <div class="move-box move-activity">
+          <div class="move-label">🎯 Activity</div>
+          <div class="activity-name">HIPAA Violation or Not?</div>
+          <div class="activity-desc">Present 8 realistic scenarios (texting a patient's DOB, faxing to the wrong number, discussing a patient in the elevator). Students hold up a red or green card. For every "violation," they must name which HIPAA rule was broken. Keeps the energy up and the content concrete.</div>
+          <span class="activity-time">⏱ 10 min</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- A&P + Terminology -->
+  <div class="module-card">
+    <div class="module-top">
+      <div class="module-icon">🧬</div>
+      <div class="module-title-wrap">
+        <div class="module-nha">NHA Module 2</div>
+        <div class="module-title">A&P Overview + Medical Terminology</div>
+      </div>
+    </div>
+    <div class="module-body">
+      <div class="move-grid">
+        <div class="move-box move-mnemonic">
+          <div class="move-label">🧠 Mnemonic</div>
+          <div class="mnemonic-word">BUILD IT</div>
+          <div class="mnemonic-breakdown">
+            <span>B</span>uild terms from parts<br>
+            <span>U</span>se prefix + root + suffix<br>
+            <span>I</span>dentify the root first<br>
+            <span>L</span>ook at the suffix for condition/procedure<br>
+            <span>D</span>on't memorize — decode<br>
+            <span>IT</span> gets easier with practice
+          </div>
+        </div>
+        <div class="move-box move-activity">
+          <div class="move-label">🎯 Activity</div>
+          <div class="activity-name">Term Deconstruction Race</div>
+          <div class="activity-desc">Write 5 medical terms on the board. Teams race to break each one into prefix, root, and suffix and write a plain-English definition. First team with all 5 correct wins. The key rule: no dictionaries, no phones — only word part logic. Builds the skill the NHA actually tests.</div>
+          <span class="activity-time">⏱ 10–12 min</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Infection Control -->
+  <div class="module-card">
+    <div class="module-top">
+      <div class="module-icon">🧤</div>
+      <div class="module-title-wrap">
+        <div class="module-nha">NHA Module 6</div>
+        <div class="module-title">Infection Control & Safety</div>
+      </div>
+    </div>
+    <div class="module-body">
+      <div class="move-grid">
+        <div class="move-box move-mnemonic">
+          <div class="move-label">🧠 Mnemonic</div>
+          <div class="mnemonic-word">SAFE CHAIN</div>
+          <div class="mnemonic-breakdown">
+            <span>S</span>usceptible host<br>
+            <span>A</span>gent (pathogen)<br>
+            <span>F</span>orce of entry (portal of entry)<br>
+            <span>E</span>xit portal<br>
+            <span>C</span>hain must be broken at any link<br>
+            <span>H</span>and hygiene breaks the most<br>
+            <span>A</span>sceptic technique matters<br>
+            <span>IN</span> = intervention stops spread
+          </div>
+        </div>
+        <div class="move-box move-activity">
+          <div class="move-label">🎯 Activity</div>
+          <div class="activity-name">Break the Chain Card Sort</div>
+          <div class="activity-desc">Give each student a card with one link in the chain of infection. Students physically stand in a chain around the room. Then read an intervention aloud ("MA performs hand hygiene"). The student whose link is broken sits down. Repeat with different interventions. Physical movement = stronger memory encoding.</div>
+          <span class="activity-time">⏱ 12–15 min</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════ -->
+  <!-- PHASE 2: CLINICAL SKILLS -->
+  <!-- ═══════════════════════════════ -->
+  <div class="phase-header-band ph-clinical">
+    <div class="ph-eyebrow">Phase 2 · Weeks 6–13</div>
+    <div class="ph-title">Clinical Skills</div>
+    <div class="ph-sub">The retention challenge in Phase 2 is volume and overlap. Students are learning hands-on procedures while simultaneously memorizing normal values, protocols, and sequences. The mnemonics here are designed to lock in the procedural order — because sequence errors are the #1 reason students lose points on clinical check-offs and exam questions.</div>
+    <div class="ph-chips">
+      <span class="ph-chip">Vital Signs</span>
+      <span class="ph-chip">Patient Intake</span>
+      <span class="ph-chip">General Patient Care</span>
+      <span class="ph-chip">★ Phlebotomy</span>
+      <span class="ph-chip">Lab / POC Testing</span>
+      <span class="ph-chip">★ EKG</span>
+      <span class="ph-chip">Pharmacology</span>
+    </div>
+  </div>
+
+  <!-- Vital Signs -->
+  <div class="module-card">
+    <div class="module-top">
+      <div class="module-icon">💓</div>
+      <div class="module-title-wrap">
+        <div class="module-nha">NHA Module 3</div>
+        <div class="module-title">Vital Signs & Patient Assessment</div>
+      </div>
+    </div>
+    <div class="module-body">
+      <div class="move-grid">
+        <div class="move-box move-mnemonic">
+          <div class="move-label">🧠 Mnemonic</div>
+          <div class="mnemonic-word">TPRRBO</div>
+          <div class="mnemonic-breakdown">
+            <span>T</span>emperature<br>
+            <span>P</span>ulse<br>
+            <span>R</span>espirations<br>
+            <span>R</span>esting blood pressure<br>
+            <span>B</span>lood oxygen (O₂ sat)<br>
+            <span>O</span>utcome: document all six
+          </div>
+        </div>
+        <div class="move-box move-activity">
+          <div class="move-label">🎯 Activity</div>
+          <div class="activity-name">Normal or Not? Rapid Fire</div>
+          <div class="activity-desc">Call out a vital sign value — "pulse 110," "temp 96.2°F," "BP 118/76." Students give a thumbs up (normal) or thumbs down (abnormal) and state the normal range for that vital. No notes. Fast pace. Repeat the ones they miss. Run this as a 2-minute warm-up every day until normal ranges are automatic.</div>
+          <span class="activity-time">⏱ 5–8 min</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- General Patient Care -->
+  <div class="module-card">
+    <div class="module-top">
+      <div class="module-icon">🩺</div>
+      <div class="module-title-wrap">
+        <div class="module-nha">NHA Modules 4 + 5</div>
+        <div class="module-title">General Patient Care & Sterile Technique</div>
+      </div>
+    </div>
+    <div class="module-body">
+      <div class="move-grid">
+        <div class="move-box move-mnemonic">
+          <div class="move-label">🧠 Mnemonic</div>
+          <div class="mnemonic-word">5 RIGHTS + 3 CHECKS</div>
+          <div class="mnemonic-breakdown">
+            <span>5 Rights:</span> Right patient · Right drug · Right dose · Right route · Right time<br><br>
+            <span>3 Checks:</span> When you pull it · When you prepare it · Before you give it
+          </div>
+        </div>
+        <div class="move-box move-activity">
+          <div class="move-label">🎯 Activity</div>
+          <div class="activity-name">Medication Error Scenario Sort</div>
+          <div class="activity-desc">Give students 6 scenario cards describing medication administration situations — some correct, some with a hidden error (wrong dose, no second identifier check, skipped route confirmation). Students identify the error and name which "Right" or "Check" was violated. Discuss as a group. Real errors, real consequences — makes it memorable.</div>
+          <span class="activity-time">⏱ 12 min</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHLEBOTOMY — HARD MODULE -->
+  <div class="module-card hard-module">
+    <div class="module-top">
+      <div class="module-icon">🩸</div>
+      <div class="module-title-wrap">
+        <div class="module-nha">NHA Module 8</div>
+        <div class="module-title">Phlebotomy & Specimen Collection</div>
+      </div>
+      <div class="hard-badge">★ This One's Hard</div>
+    </div>
+    <div class="module-body">
+      <div class="hard-callout">
+        <div class="hard-callout-label">⚠️ Why Students Struggle Here</div>
+        Phlebotomy trips students up because it has two separate memorization challenges happening at once: the <strong>order of draw</strong> (which tube color comes first) and <strong>venipuncture sequence</strong> (the procedural steps). Students often mix up which list is which, or they memorize the order of draw and blank on the rationale behind it. The mnemonic below separates these two problems.
+      </div>
+      <div class="move-grid">
+        <div class="move-box move-mnemonic">
+          <div class="move-label">🧠 Mnemonic</div>
+          <div class="mnemonic-word">STOP LIGHT GRAY</div>
+          <div class="mnemonic-breakdown">
+            Order of Draw by tube color:<br><br>
+            <span>S</span>terile (Yellow — Blood cultures)<br>
+            <span>T</span>op is Light Blue (coag)<br>
+            <span>O</span>range/Gold (SST — serum)<br>
+            <span>P</span>urple/Lavender (EDTA — CBC)<br>
+            <span>L</span>ight Green (lithium heparin)<br>
+            <span>I</span>s for Green (sodium heparin)<br>
+            <span>G</span>ray (glucose/fluoride — last)<br>
+            <span>H</span>T = Remember: <span>H</span>emolysis ruins the <span>T</span>ube if order is wrong
+          </div>
+        </div>
+        <div class="move-box move-activity">
+          <div class="move-label">🎯 Activity</div>
+          <div class="activity-name">Tube Color Lineup</div>
+          <div class="activity-desc">Print or gather colored cards representing each tube type. Shuffle them. Students race to physically arrange the cards in correct order of draw on their desk — fastest correct lineup wins. Round 2: remove one card and students identify the missing tube and explain why its position matters. Hands-on, visual, and competitive.</div>
+          <span class="activity-time">⏱ 10–12 min</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lab / POC Testing -->
+  <div class="module-card">
+    <div class="module-top">
+      <div class="module-icon">🔬</div>
+      <div class="module-title-wrap">
+        <div class="module-nha">NHA Module 7</div>
+        <div class="module-title">Lab / Point of Care Testing</div>
+      </div>
+    </div>
+    <div class="module-body">
+      <div class="move-grid">
+        <div class="move-box move-mnemonic">
+          <div class="move-label">🧠 Mnemonic</div>
+          <div class="mnemonic-word">CLIA COUNTS</div>
+          <div class="mnemonic-breakdown">
+            <span>C</span>ollect specimen correctly<br>
+            <span>L</span>abel before you leave the patient<br>
+            <span>I</span>nspect for quality issues<br>
+            <span>A</span>nalyze with calibrated equipment<br>
+            <span>C</span>ontrol tests run first (QC)<br>
+            <span>O</span>utliers get reported to provider<br>
+            <span>U</span>nderstand critical values<br>
+            <span>N</span>ever result without documentation<br>
+            <span>T</span>rack turnaround time<br>
+            <span>S</span>afely dispose all sharps/biohazards
+          </div>
+        </div>
+        <div class="move-box move-activity">
+          <div class="move-label">🎯 Activity</div>
+          <div class="activity-name">Critical Value or Routine?</div>
+          <div class="activity-desc">Present 8 lab result scenarios with values. Students decide: is this a critical value that requires immediate provider notification, or a routine result? For each critical value, they must state what they would do next and in what timeframe. Builds clinical judgment, not just memorization.</div>
+          <span class="activity-time">⏱ 10 min</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EKG — HARD MODULE -->
+  <div class="module-card hard-module">
+    <div class="module-top">
+      <div class="module-icon">💗</div>
+      <div class="module-title-wrap">
+        <div class="module-nha">NHA Module 9</div>
+        <div class="module-title">EKG & Cardiovascular Testing</div>
+      </div>
+      <div class="hard-badge">★ This One's Hard</div>
+    </div>
+    <div class="module-body">
+      <div class="hard-callout">
+        <div class="hard-callout-label">⚠️ Why Students Struggle Here</div>
+        EKG is hard for two distinct reasons. First, lead placement requires spatial memory — students can recite the lead names but blank on where they actually go on the body. Second, artifact identification looks similar to abnormal rhythms to an untrained eye, and the NHA exam tests both. Students who only memorize lead names without practicing placement almost always miss artifact questions.
+      </div>
+      <div class="move-grid">
+        <div class="move-box move-mnemonic">
+          <div class="move-label">🧠 Mnemonic</div>
+          <div class="mnemonic-word">WHITE SNOW OVER GREEN GRASS</div>
+          <div class="mnemonic-breakdown">
+            Limb lead electrode colors (RA · LA · RL · LL):<br><br>
+            <span>White</span> = Right Arm (RA)<br>
+            <span>Snow</span> (Black) = Left Arm (LA) — "snow clouds on the left"<br>
+            <span>Over</span> (Green) = Right Leg (RL)<br>
+            <span>Green</span> = Left Leg (LL)<br><br>
+            Chest leads V1–V6 go <span>right to left</span> across the precordium — think of a zipper closing across the chest.
+          </div>
+        </div>
+        <div class="move-box move-activity">
+          <div class="move-label">🎯 Activity</div>
+          <div class="activity-name">Lead Placement Labeling Map</div>
+          <div class="activity-desc">Give students a blank outline of a human torso (front view). No labels, no reference sheet. They must draw and label all 10 electrode positions from memory — 4 limb leads and 6 precordial leads. Swap with a partner to peer-check using the answer key. Round 2: identify which lead was misplaced in a pre-drawn "mistake map." Visual + spatial = sticks much better than flashcards.</div>
+          <span class="activity-time">⏱ 12–15 min</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pharmacology -->
+  <div class="module-card">
+    <div class="module-top">
+      <div class="module-icon">💊</div>
+      <div class="module-title-wrap">
+        <div class="module-nha">NHA Module 1 (Pharm)</div>
+        <div class="module-title">Pharmacology & Medication Administration</div>
+      </div>
+    </div>
+    <div class="module-body">
+      <div class="move-grid">
+        <div class="move-box move-mnemonic">
+          <div class="move-label">🧠 Mnemonic</div>
+          <div class="mnemonic-word">DO NOT GUESS</div>
+          <div class="mnemonic-breakdown">
+            Drug classifications by suffix:<br><br>
+            <span>-olol</span> = Beta blocker (BP/heart rate)<br>
+            <span>-pril</span> = ACE inhibitor (BP)<br>
+            <span>-statin</span> = Cholesterol<br>
+            <span>-zide</span> = Diuretic<br>
+            <span>-mycin / -cillin</span> = Antibiotic<br><br>
+            <span>DO NOT GUESS</span> = when in doubt, look it up. That's the real clinical standard.
+          </div>
+        </div>
+        <div class="move-box move-activity">
+          <div class="move-label">🎯 Activity</div>
+          <div class="activity-name">Drug Suffix Sort</div>
+          <div class="activity-desc">Write 10–12 medication names on the board — real, common drugs. Students group them by classification using only the suffix as a clue. No drug list allowed. After sorting, each group presents one drug and explains what it treats and which of the 5 rights would be most critical for that drug class. Bridges pharmacology to patient safety.</div>
+          <span class="activity-time">⏱ 12 min</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════ -->
+  <!-- PHASE 3: ADMIN -->
+  <!-- ═══════════════════════════════ -->
+  <div class="phase-header-band ph-admin">
+    <div class="ph-eyebrow">Phase 3 · Weeks 14–18</div>
+    <div class="ph-title">Administrative & Clinic Simulation</div>
+    <div class="ph-sub">The retention challenge in Phase 3 is that admin content feels disconnected from the clinical work students find exciting. Frame every administrative concept as patient protection or clinic survival — if this step goes wrong, the patient doesn't get care and the clinic doesn't get paid. That reframe changes everything.</div>
+    <div class="ph-chips">
+      <span class="ph-chip">Admin Assisting</span>
+      <span class="ph-chip">★ Billing, Coding & Insurance</span>
+      <span class="ph-chip">Care Coordination</span>
+    </div>
+  </div>
+
+  <!-- Admin Assisting -->
+  <div class="module-card">
+    <div class="module-top">
+      <div class="module-icon">🖥️</div>
+      <div class="module-title-wrap">
+        <div class="module-nha">NHA Module 11</div>
+        <div class="module-title">Administrative Assisting & Front Desk</div>
+      </div>
+    </div>
+    <div class="module-body">
+      <div class="move-grid">
+        <div class="move-box move-mnemonic">
+          <div class="move-label">🧠 Mnemonic</div>
+          <div class="mnemonic-word">SCHED-ID-DOC</div>
+          <div class="mnemonic-breakdown">
+            The front desk workflow in order:<br><br>
+            <span>SCHED</span>ule — appointment booked, insurance pre-verified<br>
+            <span>ID</span> — two patient identifiers confirmed at check-in<br>
+            <span>DOC</span>ument — demographics, consent, copay collected, status updated
+          </div>
+        </div>
+        <div class="move-box move-activity">
+          <div class="move-label">🎯 Activity</div>
+          <div class="activity-name">Front Desk Simulation Sprint</div>
+          <div class="activity-desc">One student plays the MA at the front desk. Another plays a patient checking in. Give the "patient" a scenario card with hidden variables (insurance card is expired, patient gives wrong date of birth, copay is declined). The "MA" must navigate the situation professionally using only the workflow steps. Rotate pairs every 3 minutes. Best for end-of-unit review.</div>
+          <span class="activity-time">⏱ 15 min</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BILLING — HARD MODULE -->
+  <div class="module-card hard-module">
+    <div class="module-top">
+      <div class="module-icon">💰</div>
+      <div class="module-title-wrap">
+        <div class="module-nha">NHA Module 11</div>
+        <div class="module-title">Billing, Coding & Insurance</div>
+      </div>
+      <div class="hard-badge">★ This One's Hard</div>
+    </div>
+    <div class="module-body">
+      <div class="hard-callout">
+        <div class="hard-callout-label">⚠️ Why Students Struggle Here</div>
+        Billing and coding is the most abstract Phase 3 content — students can't see it happening the way they can see a blood draw. The three code types (ICD-10, CPT, HCPCS) look similar on paper but serve completely different purposes, and students consistently mix up which answers the "why" vs. the "what." Add insurance terminology on top (ABN, EOB, prior auth, superbill) and it becomes overwhelming fast. The key is to give each code type one concrete anchor image it never loses.
+      </div>
+      <div class="move-grid">
+        <div class="move-box move-mnemonic">
+          <div class="move-label">🧠 Mnemonic</div>
+          <div class="mnemonic-word">WHY · WHAT · STUFF</div>
+          <div class="mnemonic-breakdown">
+            The only three things you need to remember:<br><br>
+            <span>ICD-10-CM</span> = WHY (diagnosis — why the patient came in)<br>
+            <span>CPT</span> = WHAT (procedure — what was done to them)<br>
+            <span>HCPCS</span> = STUFF (equipment, supplies, meds not in CPT)<br><br>
+            Every billing question on the NHA exam fits into WHY · WHAT · STUFF.
+          </div>
+        </div>
+        <div class="move-box move-activity">
+          <div class="move-label">🎯 Activity</div>
+          <div class="activity-name">Code Type Scenario Sort</div>
+          <div class="activity-desc">Write 9 patient visit items on index cards — 3 diagnoses, 3 procedures, 3 supplies/equipment. Shuffle and distribute. Students sort into three piles: ICD-10, CPT, or HCPCS. Round 2: add 3 insurance term cards (ABN, superbill, prior auth) and students must explain in one sentence when each form is used. Cheap, fast, and directly mirrors how the NHA frames these questions.</div>
+          <span class="activity-time">⏱ 12–15 min</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Care Coordination -->
+  <div class="module-card">
+    <div class="module-top">
+      <div class="module-icon">🤝</div>
+      <div class="module-title-wrap">
+        <div class="module-nha">NHA Module 10</div>
+        <div class="module-title">Patient Care Coordination & Education</div>
+      </div>
+    </div>
+    <div class="module-body">
+      <div class="move-grid">
+        <div class="move-box move-mnemonic">
+          <div class="move-label">🧠 Mnemonic</div>
+          <div class="mnemonic-word">REFER FIRST</div>
+          <div class="mnemonic-breakdown">
+            Care coordination workflow:<br><br>
+            <span>R</span>eceive provider order for referral<br>
+            <span>E</span>ligibility check (does insurance cover this specialist?)<br>
+            <span>F</span>orm the prior authorization request if needed<br>
+            <span>E</span>ducate the patient on next steps<br>
+            <span>R</span>ecord everything in the chart<br>
+            <span>F</span>ollow up to confirm appointment was made<br>
+            <span>I</span>nform provider if patient declines<br>
+            <span>R</span>eview transition of care documentation<br>
+            <span>S</span>end records to receiving provider<br>
+            <span>T</span>rack for completion
+          </div>
+        </div>
+        <div class="move-box move-activity">
+          <div class="move-label">🎯 Activity</div>
+          <div class="activity-name">Referral Relay</div>
+          <div class="activity-desc">Give teams a patient scenario requiring a specialist referral. Each team member owns one step of the coordination process — eligibility check, prior auth, patient education, record transfer. Teams race to complete the full referral workflow in the correct order and present it to the class in under 2 minutes. Tests sequence knowledge, teamwork, and communication — all tested on the NHA exam.</div>
+          <span class="activity-time">⏱ 15 min</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLOSING -->
+  <div class="closing-band">
+    <h3>One module at a time. One mnemonic at a time.</h3>
+    <p>You don't have to use all of these at once. Pick the module your students are in right now and start there. Add the activity to this week's plan and teach the mnemonic before you teach the concept. Small shifts, consistent repetition, compounding results.</p>
+    <div class="section-nav">
+      <span class="nav-chip">Section 1 — The Senior Disconnect ✓</span>
+      <span class="nav-chip">Section 2 — The 5-Strategy Stack ✓</span>
+      <span class="nav-chip active">Section 3 — Module-by-Module Moves ✓</span>
+      <span class="nav-chip next">Section 4 — Pacing Retention In →</span>
+      <span class="nav-chip">Section 5 — Troubleshooting Guide</span>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-top:28px; font-size:11px; color:#94A3B8;">
+    The CCMA Retention Toolkit · Section 3 of 5 · For CCMA/NHA Instructors
+  </div>
+
+</div>
+</body>
+</html>
